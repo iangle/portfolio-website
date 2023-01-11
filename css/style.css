@@ -12,6 +12,14 @@ body{
     margin: 0;
 }
 
+p{
+    text-indent: 30px;
+    text-align: justify;
+    margin-right: 5px;
+    font-size: 75%;
+    line-height: 2;
+}
+
 .links{
     color: black;
     text-decoration: none;
@@ -47,7 +55,7 @@ body{
 .content{
     grid-area: ct;
     margin: 5px;
-    overflow-y: scroll;
+    word-wrap: break-word;
 }
 
 .sidebar_wrapper{
