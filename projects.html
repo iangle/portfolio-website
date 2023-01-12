@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> Portfolio Website for Isaac Angle</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/projects.css">
+
+    <script>
+        $(document).ready(function() {
+
+            $.ajax({
+                url: "https://vs9lvakesd.execute-api.us-east-1.amazonaws.com/prod/",
+                type: "GET",
+            })
+            .done(function(data) {
+                var grid_elements = '';
+                console.log(data.Items[0].description)
+                $(data.Items).each(function(index) {
+                    grid_elements += '<div id="grid_element">' + 
+                                         '<img id="grid_picture" src="' + data.Items[index].picture + '"/>' +
+                                         '<h3 id="grid_text">' + 'Project Title: ' + data.Items[index].title + '</h3>' +
+                                         '<a id="grid_url" href="' + data.Items[index].url + '">' + 'Project URL</a>' +
+                                         '<p id="grid_paragraph">' + data.Items[index].description + '</p>' + 
+                                     '</div>'
+                })
+                $("#grid_content").append(grid_elements);
+            })
+    })
+    </script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <img style="margin: 10px;" class="signature" src="https://fontmeme.com/permalink/230105/664068ce367aac8a7277e1afd3ba767c.png" alt="signature picture"/>
+            <img style="padding-left: 50px;" class="signature" src="https://fontmeme.com/permalink/230105/924311cbfdd17d3a9f3dd6849ade2d76.png" alt="signature picture"/>
+            <a class="links" href="index.html"> About</a>
+            <a class="links" href="projects.html"> Projects</a>
+            <a class="links" target="_blank" href="https://github.com/iangle"> GitHub</a>
+            <a class="links" target="_blank" href="https://www.upwork.com/freelancers/~01f39a6e570831e4b5"> Upwork</a>
+            <a class="links" target="_blank" href="https://www.linkedin.com/in/isaac-angle-282811203/"> LinkedIn</a>
+            <a class="links" target="_blank" href="https://www.facebook.com/isaac.angle.100/"> Facebook</a>
+            <a class="links" target="_blank" href="https://www.instagram.com/isaacangle/?next=%2F"> Instagram</a>
+        </div>
+        <div class="content" id="grid_content">
+        </div>
+    </div>
+</body>
+</html>
